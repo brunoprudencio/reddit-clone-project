@@ -1,10 +1,13 @@
 package com.brunoprudencio.redditclone.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.UUID;
 
-import com.brunoprudencio.redditclone.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import com.brunoprudencio.redditclone.model.VerificationToken;
 
-public interface VerificationTokenRepository extends JpaRepository<VerificationToken, Long> {
+@Repository
+public interface VerificationTokenRepository extends JpaRepository<VerificationToken, UUID> {
 
 }

@@ -9,8 +9,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 
+import com.brunoprudencio.redditclone.dto.NotificationMail;
 import com.brunoprudencio.redditclone.exception.ActivationMailException;
-import com.brunoprudencio.redditclone.model.NotificationMail;
 
 @Service
 @Slf4j
@@ -19,7 +19,6 @@ class MailService {
 
 	private final JavaMailSender mailSender;
 	private final MailContentBuilder mailContentBuilder;
-
 	private static final String FROM = "reddit-clone@mail.com";
 
 	void sendMail(NotificationMail notificationMail) {

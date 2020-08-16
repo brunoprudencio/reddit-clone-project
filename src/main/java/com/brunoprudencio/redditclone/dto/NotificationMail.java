@@ -1,4 +1,4 @@
-package com.brunoprudencio.redditclone.model;
+package com.brunoprudencio.redditclone.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

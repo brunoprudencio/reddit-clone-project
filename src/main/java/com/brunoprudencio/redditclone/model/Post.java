@@ -24,21 +24,21 @@ import lombok.NoArgsConstructor;
 public class Post {
 
 	@Id
-	private UUID postID;
+	private UUID postId;
 	private String postName;
 	private String url;
 
 	@Lob
 	private String description;
-	private Integer voteCount = 0;
+	private final Integer voteCount = 0;
 
 	@ManyToOne(fetch = LAZY)
-	@JoinColumn(name = "userId", referencedColumnName = "userId")
+	@JoinColumn(name = "userId")
 	private User user;
 	private Instant createdAt;
 
 	@ManyToOne(fetch = LAZY)
-	@JoinColumn(name = "id", referencedColumnName = "id")
+	@JoinColumn(name = "subId")
 	private Subreddit subreddit;
 
 }

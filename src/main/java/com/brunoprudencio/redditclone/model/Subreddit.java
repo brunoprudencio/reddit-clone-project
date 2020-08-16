@@ -1,14 +1,13 @@
 package com.brunoprudencio.redditclone.model;
 
 import static javax.persistence.FetchType.LAZY;
-import static javax.persistence.GenerationType.IDENTITY;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -24,14 +23,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 public class Subreddit {
+
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	private UUID id;
+	private UUID subId;
 	private String name;
 	private String description;
 
 	@OneToMany(fetch = LAZY)
-	private List<Post> posts;
+	private final List<Post> posts = new ArrayList<>();
 	private Instant createdDate;
 
 	@ManyToOne(fetch = LAZY)
