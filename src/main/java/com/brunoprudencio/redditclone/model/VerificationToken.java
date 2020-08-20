@@ -7,7 +7,9 @@ import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,12 +21,15 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "verificationtoken")
 public class VerificationToken {
 
 	@Id
 	private UUID id;
 	private String token;
 	@OneToOne(fetch = LAZY)
-	private User user;
+	@JoinColumn(name = "userId")
+	private Affiliate affiliate;
 	private Instant expiryDate;
+
 }

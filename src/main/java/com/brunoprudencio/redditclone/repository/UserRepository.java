@@ -1,13 +1,24 @@
 package com.brunoprudencio.redditclone.repository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.brunoprudencio.redditclone.model.User;
+import com.brunoprudencio.redditclone.model.Affiliate;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, UUID> {
+public interface UserRepository extends JpaRepository<Affiliate, UUID> {
 
+	Optional<Affiliate> findByUsername(String username);
+
+	@Transactional
+	@Modifying(clearAutomatically = true)
+	@Query(value = "update affiliate set enabled = TRUE where user_id =:user_id ", nativeQuery = true)
+	void activateUser(@Param("user_id") UUID id);
 }

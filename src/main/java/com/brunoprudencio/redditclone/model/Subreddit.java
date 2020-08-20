@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,6 +23,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Builder
+@Table(name = "subreddit")
 public class Subreddit {
 
 	@Id
@@ -34,5 +36,5 @@ public class Subreddit {
 	private Instant createdDate;
 
 	@ManyToOne(fetch = LAZY)
-	private User user;
+	private Affiliate affiliate;
 }

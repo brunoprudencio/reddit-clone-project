@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,6 +22,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "post")
 public class Post {
 
 	@Id
@@ -34,7 +36,7 @@ public class Post {
 
 	@ManyToOne(fetch = LAZY)
 	@JoinColumn(name = "userId")
-	private User user;
+	private Affiliate affiliate;
 	private Instant createdAt;
 
 	@ManyToOne(fetch = LAZY)

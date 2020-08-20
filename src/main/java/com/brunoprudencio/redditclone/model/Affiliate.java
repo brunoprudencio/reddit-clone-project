@@ -13,12 +13,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
 @Builder
-@NoArgsConstructor
+@Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "affiliate")
-public class User {
+public class Affiliate {
 
 	@Id
 	private UUID userId;
@@ -28,4 +28,5 @@ public class User {
 	private boolean enabled;
 	private Instant createdAt;
 	private Instant lastModifiedAt;
+
 }
