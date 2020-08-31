@@ -10,12 +10,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.brunoprudencio.redditclone.model.Affiliate;
+import com.brunoprudencio.redditclone.model.RedditUser;
 
 @Repository
-public interface UserRepository extends JpaRepository<Affiliate, UUID> {
+public interface UserRepository extends JpaRepository<RedditUser, UUID> {
 
-	Optional<Affiliate> findByUsername(String username);
+	Optional<RedditUser> findByUsername(String username);
 
 	@Transactional
 	@Modifying(clearAutomatically = true)

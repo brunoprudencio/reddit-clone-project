@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.brunoprudencio.redditclone.dto.RegisterRequest;
-import com.brunoprudencio.redditclone.model.Affiliate;
+import com.brunoprudencio.redditclone.model.RedditUser;
 import com.brunoprudencio.redditclone.repository.UserRepository;
 
 @Service
@@ -20,13 +20,13 @@ public class UserService {
 	private final UserRepository userRepository;
 	private final PasswordEncoder passwordEncoder;
 
-	public Affiliate findByUsername(String username) {
+	public RedditUser findByUsername(String username) {
 		return userRepository.findByUsername( username )
 				.orElseThrow( () -> new UsernameNotFoundException( "No user found for " + username ) );
 	}
 
-	Affiliate mapUserFromRequest(RegisterRequest registerRequest) {
-		return Affiliate.builder()
+	RedditUser mapUserFromRequest(RegisterRequest registerRequest) {
+		return RedditUser.builder()
 				.userId( UUID.randomUUID() )
 				.username( registerRequest.getUsername() )
 				.email( registerRequest.getEmail() )
@@ -36,8 +36,8 @@ public class UserService {
 				.build();
 	}
 
-	void register(Affiliate affiliate) {
-		userRepository.save( affiliate );
+	void register(RedditUser redditUser) {
+		userRepository.save( redditUser );
 	}
 
 	void activateUser(UUID id) {
